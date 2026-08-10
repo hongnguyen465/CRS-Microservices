@@ -4,21 +4,27 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "course")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "ten_mon_hoc", nullable = false, length = 255)
+
+    @Column(name = "ten_mon_hoc")
     private String tenMonHoc;
-    @Column(name = "so_tin_chi", nullable = false)
+
+    @Column(name = "so_tin_chi")
     private Integer soTinChi;
-    @Column(name = "so_cho_toi_da", nullable = false)
+
+    @Column(name = "so_cho_toi_da")
     private Integer soChoToiDa;
-    @Column(name = "so_cho_con_lai", nullable = false)
+
+    @Column(name = "so_cho_con_lai")
     private Integer soChoConLai;
 }
