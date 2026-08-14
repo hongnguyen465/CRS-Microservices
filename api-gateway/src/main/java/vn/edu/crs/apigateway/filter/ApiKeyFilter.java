@@ -1,4 +1,5 @@
 package vn.edu.crs.apigateway.filter;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -13,7 +14,8 @@ public class ApiKeyFilter implements GlobalFilter, Ordered {
     @Value("${partner.api-key}")
     private String validApiKey;
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain
+            chain) {
         ServerHttpRequest request = exchange.getRequest();
         String path = request.getURI().getPath();
         if (!path.startsWith("/api/public/courses")) {
@@ -28,6 +30,6 @@ public class ApiKeyFilter implements GlobalFilter, Ordered {
     }
     @Override
     public int getOrder() {
-        return -2;
+        return -2; // chay truoc AuthHeaderFilter cho chinh route nay
     }
 }
